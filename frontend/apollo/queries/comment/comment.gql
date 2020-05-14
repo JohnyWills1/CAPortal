@@ -1,0 +1,15 @@
+query Comment($id: ID!) {
+  comment(id: $id) {
+    id
+    content
+    like_count
+    post {
+      id
+    }
+    user {
+      username
+    }
+    created_at
+    updated_at
+  }
+}

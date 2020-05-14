@@ -1,0 +1,15 @@
+query Comments {
+  comments {
+    id
+    content
+    like_count
+    user {
+      username
+    }
+    post {
+      id
+    }
+    created_at
+    updated_at
+  }
+}
