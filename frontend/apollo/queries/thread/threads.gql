@@ -1,0 +1,25 @@
+# Write your query or mutation here
+query threads {
+  threads {
+    id
+    name
+    user {
+      id
+      email
+      role {
+        id
+        description
+      }
+    }
+    Image {
+      id
+      url
+    }
+    posts {
+      id
+      title
+      content
+    }
+    created_at
+  }
+}

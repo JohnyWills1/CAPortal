@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Forumuser` model.
+ * Lifecycle callbacks for the `Thread` model.
  */
 
 module.exports = {

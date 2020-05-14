@@ -23,11 +23,18 @@
     "tags": {
       "collection": "tag"
     },
-    "comments": {
-      "collection": "comments"
+    "thread": {
+      "model": "thread",
+      "via": "posts"
     },
-    "category": {
-      "model": "category"
+    "comments": {
+      "collection": "comments",
+      "via": "post"
+    },
+    "user": {
+      "model": "user",
+      "via": "posts",
+      "plugin": "users-permissions"
     }
   }
 }

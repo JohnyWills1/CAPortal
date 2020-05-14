@@ -7,18 +7,16 @@
   },
   "options": {
     "increments": true,
-    "timestamps": [
-      "created_at",
-      "updated_at"
-    ],
+    "timestamps": true,
     "comment": ""
   },
   "attributes": {
     "content": {
       "type": "text"
     },
-    "like_count": {
-      "type": "integer"
+    "post": {
+      "model": "post",
+      "via": "comments"
     },
     "user": {
       "model": "user",

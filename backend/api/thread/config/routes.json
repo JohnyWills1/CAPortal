@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/categories",
-      "handler": "Category.find",
+      "path": "/threads",
+      "handler": "Thread.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/categories/count",
-      "handler": "Category.count",
+      "path": "/threads/count",
+      "handler": "Thread.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/categories/:id",
-      "handler": "Category.findOne",
+      "path": "/threads/:id",
+      "handler": "Thread.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/categories",
-      "handler": "Category.create",
+      "path": "/threads",
+      "handler": "Thread.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/categories/:id",
-      "handler": "Category.update",
+      "path": "/threads/:id",
+      "handler": "Thread.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/categories/:id",
-      "handler": "Category.delete",
+      "path": "/threads/:id",
+      "handler": "Thread.delete",
       "config": {
         "policies": []
       }

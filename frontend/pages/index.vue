@@ -5,7 +5,6 @@
       <div class="uk-container uk-container-large">
         <h1>CA-Portal</h1>
 
-        <Posts :posts="posts"></Posts>
 
       </div>
     </div>
@@ -15,22 +14,22 @@
 <nuxt/>
 
 <script>
-import postsQuery from '~/apollo/queries/post/posts'
-import Posts from '~/components/Posts'
+import threadsQuery from '~/apollo/queries/thread/threads'
+import Threads from '~/components/Threads'
 
 export default {
   data() {
     return {
-      posts: [],
+      threads: [],
     }
   },
   components: {
-    Posts
+    Threads
   },
   apollo: {
-    posts: {
+    threads: {
       prefetch: true,
-      query: postsQuery,
+      query: threadsQuery,
       variables () {
         return { id: parseInt(this.$route.params.id) }
       }

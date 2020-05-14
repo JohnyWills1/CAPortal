@@ -25,9 +25,7 @@
         <button class="uk-offcanvas-close" type="button" uk-close></button>
           <h2>CA-Portal</h2>
           <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" uk-nav>
-            <li v-for="category in categories">
-              <router-link class="uk-modal-close" :to="{ name: 'categories-id', params: { id: category.id }}" tag="a">{{ category.name }}</router-link>
-            </li>
+            Test
           </ul>
         <p class="uk-text-light">Built with Strapi</p>
       </div>
@@ -39,7 +37,6 @@
 </template>
 
 <script>
-import categoriesQuery from '~/apollo/queries/category/categories'
 
 export default {
   data() {
@@ -48,10 +45,7 @@ export default {
     }
   },
   apollo: {
-    categories: {
-      prefetch: true,
-      query: categoriesQuery
-    }
+    
   },
   methods: {
 
