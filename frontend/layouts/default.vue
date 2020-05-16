@@ -8,10 +8,17 @@
           <NuxtLink to="/"><span uk-icon="home"></span></NuxtLink>
         </li>
       </ul>
-
     </div>
 
-    <div class="uk-navbar-right">
+
+    <div class="uk-navbar-right" v-if="$auth.loggedIn">
+      <ul class="uk-navbar-nav">
+        <li><a><span class="uk-padding-small" uk-icon="user"></span>{{ $auth.user.username }}</a></li>
+        <li><button class="uk-button uk-button-secondary uk-button-small" v-on:click="logout()"><span class="uk-padding-small" uk-icon="settings"></span>Logout</button></li>
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right" v-else>
       <ul class="uk-navbar-nav">
         <li><a href="/login" uk-toggle><span class="uk-padding-small" uk-icon="user"></span>Login</a></li>
         <li><a href="/signup" uk-toggle><span class="uk-padding-small" uk-icon="sign-in"></span>Sign-up</a></li>
@@ -25,7 +32,9 @@
         <button class="uk-offcanvas-close" type="button" uk-close></button>
           <h2>CA-Portal</h2>
           <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" uk-nav>
-            Test
+            <li v-for="thread in threads">
+              <router-link class="uk-modal-close" :to="{ name: 'threads-id', params: { id: thread.id }}" tag="a">{{ thread.name }}</router-link>
+            </li>
           </ul>
         <p class="uk-text-light">Built with Strapi</p>
       </div>
@@ -37,6 +46,8 @@
 </template>
 
 <script>
+import threadsQuery from '~/apollo/queries/thread/threads';
+import axios from 'axios';
 
 export default {
   data() {
@@ -45,10 +56,21 @@ export default {
     }
   },
   apollo: {
-    
+    threads: {
+      prefetch: true,
+      query: threadsQuery
+    }
   },
   methods: {
-
+  async logout() {
+    try {
+      this.$auth.logout()
+      this.$axios.setHeader('Authorization', null)
+      this.$router.push("/")
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 }
 </script>

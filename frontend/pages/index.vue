@@ -5,6 +5,7 @@
       <div class="uk-container uk-container-large">
         <h1>CA-Portal</h1>
 
+        <Threads :threads="threads"></Threads>
 
       </div>
     </div>

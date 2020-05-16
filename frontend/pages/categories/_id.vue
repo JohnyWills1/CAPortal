@@ -16,7 +16,6 @@
 
 <script>
 import postsQuery from '~/apollo/queries/post/posts-categories'
-import Posts from '~/components/Posts'
 
 export default {
   data() {

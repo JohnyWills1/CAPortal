@@ -49,15 +49,25 @@ export default {
   modules: [
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
-    ['nuxt-fontawesome', {
-
-    }],
     '@nuxtjs/axios',
     '@nuxtjs/auth'
   ],
 
   axios: {
-    baseURL: 'http:localhost:3000/api'
+    baseURL: 'http://localhost:1337/'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'auth/local', method: 'post', propertyName: 'jwt' },
+          user: { url: 'users/me', method: 'get', propertyName: false }
+        },
+      tokenRequired: true,
+      tokenType: 'bearer'
+      }
+    }
   },
 
   markdownit: {

@@ -6,22 +6,15 @@
       <div class="uk-width-1-1@m">
         <div class="uk-margin uk-width-large uk-margin-auto">
           <div class="uk-modal-header">
-            <h3 class="uk-card-title uk-text-center">Welcome back!</h3>
+            <h3 class="uk-card-title uk-text-center">Password Reset</h3>
           </div>
 
           <div class="uk-modal-body">
-            <form @submit.stop.prevent="loginUser()">
+            <form @submit.stop.prevent="resetPassword()">
               <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                   <span class="uk-form-icon" uk-icon="mail"></span>
-                  <input class="uk-input uk-form-large" type="text" v-model="login.identifier">
-                </div>
-              </div>
-
-              <div class="uk-margin">
-                <div class="uk-inline uk-width-1-1">
-                  <span class="uk-form-icon" uk-icon="lock"></span>
-                  <input class="uk-input uk-form-large" type="password" v-model="login.password">
+                  <input class="uk-input uk-form-large" type="text" v-model.lazy="login.email">
                 </div>
               </div>
 
@@ -30,7 +23,7 @@
                   <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Login</button>
                 </div>
                 <div class="uk-text-small uk-text-center">Not registered? <a href="/signup"> Create an account</a></div>
-                <div class="uk-text-small uk-text-center">Forgot Password? <a href="/resetPassword"> Send Reset E-mail</a></div>
+                <div class="uk-text-small uk-text-center">Forgot Password? <a onclick="resetPassword()"> Send Reset E-mail</a></div>
               </div>
             </form>
           </div>
@@ -48,21 +41,25 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      //Log In
       login: {
-        identifier: '',
-        password: ''
+        email: ''
       }
     }
   },
   methods: {
-    async loginUser() {
-      try {
-        let response = await this.$auth.loginWith('local', { data: this.login })
-        this.$router.push("/");
-      } catch (err) {
-        console.log(err)
-      }
+    resetPassword() {
+      axios
+        .post('http://localhost:1337/auth/forgot-password', {
+          email: this.login.email,
+        })
+        .then(response => {
+          // Handle success.
+          console.log('Your user received an email');
+        })
+        .catch(error => {
+          // Handle error.
+          console.log('An error occurred:', error);
+        });
     }
   }
 }
