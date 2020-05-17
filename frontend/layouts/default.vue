@@ -1,23 +1,44 @@
 <template>
 <div>
-  <nav class="uk-navbar-container" uk-navbar>
+  <nav class="uk-navbar-container uk-margin uk-flex" uk-navbar>
+    <!-- Left Nav Bar -->
     <div class="uk-navbar-left">
       <ul class="uk-navbar-nav">
-        <li><a href="#modal-offnav" uk-toggle><span uk-icon="table"></span></a></li>
         <li>
-          <NuxtLink to="/"><span uk-icon="home"></span></NuxtLink>
+          <a class="uk-navbar-toggle" href="#modal-offnav" uk-toggle>
+              <span class="uk-padding-small" uk-icon="menu"></span>
+              Menu
+          </a>
         </li>
       </ul>
     </div>
 
-
-    <div class="uk-navbar-right" v-if="$auth.loggedIn">
-      <ul class="uk-navbar-nav">
-        <li><a><span class="uk-padding-small" uk-icon="user"></span>{{ $auth.user.username }}</a></li>
-        <li><button class="uk-button uk-button-secondary uk-button-small" v-on:click="logout()"><span class="uk-padding-small" uk-icon="settings"></span>Logout</button></li>
+    <div>
+      <ul class="uk-navbar-nav uk-flex-center">
+        <li>
+          <a class="uk-logo" href="/">CA<span class="uk-icon" uk-icon="icon: world"></span>Portal</a>
+        </li>
       </ul>
     </div>
 
+    <!-- If user is logged in then load the account -->
+    <div class="uk-navbar-right" v-if="$auth.loggedIn">
+      <ul class="uk-navbar-nav">
+        <li>
+          <a class="uk-navbar-item">
+            <span class="uk-padding-small" uk-icon="user"></span>
+            {{ $auth.user.username }}
+          </a>
+        </li>
+        <li>
+          <a class="uk-navbar-item" @click.prevent="logout()">
+            <span class="uk-padding-small" uk-icon="settings"></span>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- normal right nav bar no user logged in  -->
     <div class="uk-navbar-right" v-else>
       <ul class="uk-navbar-nav">
         <li><a href="/login" uk-toggle><span class="uk-padding-small" uk-icon="user"></span>Login</a></li>
@@ -62,14 +83,8 @@ export default {
     }
   },
   methods: {
-  async logout() {
-    try {
-      this.$auth.logout()
-      this.$axios.setHeader('Authorization', null)
-      this.$router.push("/")
-      } catch (err) {
-        console.log(err)
-      }
+    logout() {
+      this.$auth.reset()
     }
   }
 }

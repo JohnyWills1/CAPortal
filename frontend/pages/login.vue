@@ -50,8 +50,8 @@ export default {
     return {
       //Log In
       login: {
-        identifier: '',
-        password: ''
+        identifier: 'test@gmail.com',
+        password: 'test123'
       }
     }
   },
@@ -59,7 +59,9 @@ export default {
     async loginUser() {
       try {
         let response = await this.$auth.loginWith('local', { data: this.login })
-        this.$router.push("/");
+        console.log(response)
+        console.log(response.data)
+        // this.$router.push("/");
       } catch (err) {
         console.log(err)
       }
