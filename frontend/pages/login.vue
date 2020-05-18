@@ -14,14 +14,14 @@
               <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                   <span class="uk-form-icon" uk-icon="mail"></span>
-                  <input class="uk-input uk-form-large" type="text" v-model="login.identifier">
+                  <input class="uk-input uk-form-large" type="text" placeholder="E-mail" v-model="login.identifier">
                 </div>
               </div>
 
               <div class="uk-margin">
                 <div class="uk-inline uk-width-1-1">
                   <span class="uk-form-icon" uk-icon="lock"></span>
-                  <input class="uk-input uk-form-large" type="password" v-model="login.password">
+                  <input class="uk-input uk-form-large" type="password" placeholder="Password" v-model="login.password">
                 </div>
               </div>
 
@@ -50,8 +50,8 @@ export default {
     return {
       //Log In
       login: {
-        identifier: 'test@gmail.com',
-        password: 'test123'
+        identifier: '',
+        password: ''
       }
     }
   },

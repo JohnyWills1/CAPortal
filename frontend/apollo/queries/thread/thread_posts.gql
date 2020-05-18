@@ -1,10 +1,10 @@
-# Write your query or mutation here
-query threads {
-  threads {
+query thread_posts($id: ID!) {
+  thread(id: $id) {
     id
     name
     user {
       id
+      username
       email
       role {
         id
@@ -17,25 +17,22 @@ query threads {
     }
     created_at
     posts {
+      id
       title
-      content
-      user {
-        username
-        email
-        id
-      }
+    	content
       like_count
       comments {
+        id
         content
         user {
           username
           email
           id
         }
-        id
         created_at
         updated_at
       }
     }
+    updated_at
   }
 }

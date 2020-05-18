@@ -7,27 +7,26 @@
         <div class="uk-modal-header">
           <h3 class="uk-card-title uk-text-center">Create An Account</h3>
         </div>
-
         <div class="uk-modal-body">
           <form @submit.prevent="createUser()" method="post" v-if="!$store.state.authUser">
             <div class="uk-margin">
               <div class="uk-inline uk-width-1-1">
                 <span class="uk-form-icon" uk-icon="mail"></span>
-                <input class="uk-input uk-form-large" type="email" v-model.lazy="signup.email" />
+                <input class="uk-input uk-form-large" type="email" placeholder="E-mail" v-model="email" />
               </div>
             </div>
 
             <div class="uk-margin">
               <div class="uk-inline uk-width-1-1">
                 <span class="uk-form-icon" uk-icon="user"></span>
-                <input class="uk-input uk-form-large" type="text" v-model.lazy="signup.username" />
+                <input class="uk-input uk-form-large" type="text" placeholder="Username" v-model="username" />
               </div>
             </div>
 
             <div class="uk-margin">
               <div class="uk-inline uk-width-1-1">
                 <span class="uk-form-icon" uk-icon="lock"></span>
-                <input class="uk-input uk-form-large" type="password" v-model.lazy="signup.password" />
+                <input class="uk-input uk-form-large" type="password" placeholder="Password" v-model="password" />
               </div>
             </div>
 
@@ -37,9 +36,6 @@
               </div>
             </div>
           </form>
-          <div v-else>
-            <p>{{  }}</p>
-          </div>
         </div>
       </div>
     </div>
@@ -55,28 +51,26 @@ export default {
   data() {
     return {
       //Sign Up
-      signup: {
-        email: '',
-        username: '',
-        password: ''
-      }
+      email: '',
+      username: '',
+      password: ''
     }
   },
   methods: {
   createUser() {
     axios
-      .post('http://localhost:1337/auth/local/register', {
-        username: this.signup.username,
-        email: this.signup.email,
-        password: this.signup.password,
+      .post('http://localhost:1337/users', {
+        username: this.username,
+        email: this.email,
+        password: this.password,
       })
       .then(response => {
         // Handle success.
         console.log('Well done!');
-        console.log('User profile', response.data.user);
-        console.log('User token', response.data.jwt);
+        console.log('User profile', response);
+        console.log('User token', response.data);
 
-        this.$auth.setUser(response.data.user)
+        this.loginUser()
 
         this.$router.push('/')
       })
@@ -84,6 +78,19 @@ export default {
         // Handle error.
         console.log('An error occurred:', error);
       });
+    },
+    async loginUser() {
+      try {
+        let response = await this.$auth.loginWith('local', {
+          data: {
+              identifier: this.email,
+              password: this.password
+          }
+        })
+        console.log(response)
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 }

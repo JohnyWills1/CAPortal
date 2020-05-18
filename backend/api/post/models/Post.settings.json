@@ -23,10 +23,6 @@
     "tags": {
       "collection": "tag"
     },
-    "thread": {
-      "model": "thread",
-      "via": "posts"
-    },
     "comments": {
       "collection": "comments",
       "via": "post"
@@ -35,6 +31,9 @@
       "model": "user",
       "via": "posts",
       "plugin": "users-permissions"
+    },
+    "like_count": {
+      "type": "integer"
     }
   }
 }

@@ -22,14 +22,13 @@
       "via": "related",
       "plugin": "upload"
     },
-    "posts": {
-      "collection": "post",
-      "via": "thread"
-    },
     "user": {
       "model": "user",
       "via": "threads",
       "plugin": "users-permissions"
+    },
+    "posts": {
+      "collection": "post"
     }
   }
 }

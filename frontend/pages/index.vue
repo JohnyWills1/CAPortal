@@ -1,15 +1,7 @@
 <template>
-  <div>
-
-    <div class="uk-section">
-      <div class="uk-container uk-container-large">
-        <h1>CA-Portal</h1>
-
-        <Threads :threads="threads"></Threads>
-
-      </div>
-    </div>
-
+  <div class="uk-container uk-container-large">
+    <h1 class="uk-heading-large">CAPortal</h1>
+    <Threads :threads="threads"></Threads>
   </div>
 </template>
 <nuxt/>
@@ -30,10 +22,7 @@ export default {
   apollo: {
     threads: {
       prefetch: true,
-      query: threadsQuery,
-      variables () {
-        return { id: parseInt(this.$route.params.id) }
-      }
+      query: threadsQuery
     }
   }
 }

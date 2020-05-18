@@ -54,7 +54,7 @@
           <h2>CA-Portal</h2>
           <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" uk-nav>
             <li v-for="thread in threads">
-              <router-link class="uk-modal-close" :to="{ name: 'threads-id', params: { id: thread.id }}" tag="a">{{ thread.name }}</router-link>
+              <router-link class="uk-modal-close" :to="{ name: 'thread-id', params: { id: thread.id }}" tag="a">{{ thread.name }}</router-link>
             </li>
           </ul>
         <p class="uk-text-light">Built with Strapi</p>
@@ -84,6 +84,7 @@ export default {
   },
   methods: {
     logout() {
+      console.log("Logged Out, Bye :D")
       this.$auth.reset()
     }
   }

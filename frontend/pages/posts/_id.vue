@@ -1,14 +1,27 @@
 <template>
 
-<div>
-  <div class="uk-section">
-    <div class="uk-container uk-container-small">
-      <div v-if="post.content" id="editor" v-html="$md.render(post.content)"></div>
-      <p v-if="post.created_at">{{ moment(post.created_at).format("LL") }}</p>
-    </div>
-  </div>
+<div class="uk-section">
+  <div class="uk-container uk-container-small">
 
-  <div class="uk-section-muted">
+  <article class="uk-article">
+
+    <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{post.title}}</a></h1>
+
+    <p class="uk-article-meta" v-if="post.user">Written by {{ post.user.username }} on {{moment(post.created_at).format("LL")}}. Posted in {{post.thread.name}}</p>
+
+    <p class="uk-article-meta">Likes: {{post.like_count}}<span uk-icon="icon: heart" class="uk-padding-small uk-padding-remove-left"></span></p>
+
+    <p v-if="post.content" id="editor" v-html="$md.render(post.content)"></p>
+
+    <div class="uk-grid-small uk-child-width-auto" uk-grid>
+        <div>
+            <a class="uk-button uk-button-text" href="#" v-if="post.comments">{{post.comments.length}} Comments</a>
+        </div>
+    </div>
+
+</article>
+  <!-- Comment section -->
+  <!-- <div class="uk-section-muted">
     <div class="uk-container">
       <div v-for="comment in post.comments">
         <br>
@@ -22,6 +35,7 @@
         <br>
       </div>
     </div>
+  </div> -->
   </div>
 </div>
 </template>

@@ -603,12 +603,6 @@
                 "role": {
                   "type": "string"
                 },
-                "threads": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "comments": {
                   "type": "array",
                   "items": {
@@ -616,6 +610,12 @@
                   }
                 },
                 "posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "threads": {
                   "type": "array",
                   "items": {
                     "type": "string"

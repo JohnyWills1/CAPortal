@@ -1,24 +1,32 @@
-query Posts {
+query posts {
   posts {
     id
     title
     content
+    like_count
     created_at
-    category {
-      name
-    }
     tags {
+      id
       tag_name
     }
     comments {
+      id
       content
-      like_count
       user {
+        id
         username
       }
-      id
       created_at
       updated_at
+    }
+    user {
+      id
+      username
+      email
+      role {
+        id
+        name
+      }
     }
   }
 }

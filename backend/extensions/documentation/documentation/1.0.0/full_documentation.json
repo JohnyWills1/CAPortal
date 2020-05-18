@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/14/2020 5:31:49 PM"
+    "x-generation-date": "05/18/2020 4:10:26 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4144,37 +4144,6 @@
           "content": {
             "type": "string"
           },
-          "post": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "thread": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -4209,12 +4178,6 @@
               "role": {
                 "type": "string"
               },
-              "threads": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "comments": {
                 "type": "array",
                 "items": {
@@ -4226,6 +4189,43 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "post": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
               }
             }
           }
@@ -4236,10 +4236,10 @@
           "content": {
             "type": "string"
           },
-          "post": {
+          "user": {
             "type": "string"
           },
-          "user": {
+          "post": {
             "type": "string"
           }
         }
@@ -4271,34 +4271,6 @@
               }
             }
           },
-          "thread": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "Image": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              }
-            }
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -4312,10 +4284,10 @@
                 "content": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 }
               }
@@ -4355,12 +4327,6 @@
               "role": {
                 "type": "string"
               },
-              "threads": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "comments": {
                 "type": "array",
                 "items": {
@@ -4372,8 +4338,17 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
+          },
+          "like_count": {
+            "type": "integer"
           }
         }
       },
@@ -4388,9 +4363,6 @@
           "tags": {
             "type": "string"
           },
-          "thread": {
-            "type": "string"
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -4399,6 +4371,9 @@
           },
           "user": {
             "type": "string"
+          },
+          "like_count": {
+            "type": "integer"
           }
         }
       },
@@ -4482,40 +4457,6 @@
               }
             }
           },
-          "posts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "string"
-                },
-                "thread": {
-                  "type": "string"
-                },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -4550,12 +4491,6 @@
               "role": {
                 "type": "string"
               },
-              "threads": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "comments": {
                 "type": "array",
                 "items": {
@@ -4567,6 +4502,43 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "posts": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
               }
             }
           }
@@ -4577,13 +4549,10 @@
           "name": {
             "type": "string"
           },
-          "posts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "user": {
+            "type": "string"
+          },
+          "posts": {
             "type": "string"
           }
         }
@@ -4678,12 +4647,6 @@
                 "role": {
                   "type": "string"
                 },
-                "threads": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "comments": {
                   "type": "array",
                   "items": {
@@ -4691,6 +4654,12 @@
                   }
                 },
                 "posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "threads": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -4791,37 +4760,6 @@
               }
             }
           },
-          "threads": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "Image": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -4835,10 +4773,10 @@
                 "content": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 }
               }
@@ -4863,9 +4801,6 @@
                 "tags": {
                   "type": "string"
                 },
-                "thread": {
-                  "type": "string"
-                },
                 "comments": {
                   "type": "array",
                   "items": {
@@ -4873,6 +4808,37 @@
                   }
                 },
                 "user": {
+                  "type": "string"
+                },
+                "like_count": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "Image": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
+                },
+                "posts": {
                   "type": "string"
                 }
               }
@@ -4915,12 +4881,6 @@
           "role": {
             "type": "string"
           },
-          "threads": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -4928,6 +4888,12 @@
             }
           },
           "posts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "threads": {
             "type": "array",
             "items": {
               "type": "string"

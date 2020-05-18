@@ -1162,37 +1162,6 @@
               }
             }
           },
-          "threads": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "Image": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -1206,10 +1175,10 @@
                 "content": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 }
               }
@@ -1234,9 +1203,6 @@
                 "tags": {
                   "type": "string"
                 },
-                "thread": {
-                  "type": "string"
-                },
                 "comments": {
                   "type": "array",
                   "items": {
@@ -1244,6 +1210,37 @@
                   }
                 },
                 "user": {
+                  "type": "string"
+                },
+                "like_count": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "Image": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "string"
+                },
+                "posts": {
                   "type": "string"
                 }
               }
@@ -1286,12 +1283,6 @@
           "role": {
             "type": "string"
           },
-          "threads": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "comments": {
             "type": "array",
             "items": {
@@ -1299,6 +1290,12 @@
             }
           },
           "posts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "threads": {
             "type": "array",
             "items": {
               "type": "string"

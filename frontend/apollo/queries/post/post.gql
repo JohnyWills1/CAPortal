@@ -1,24 +1,32 @@
-query Post($id: ID!) {
+query post($id: ID!) {
   post(id: $id) {
     id
     title
     content
     created_at
-    category {
-      name
-    }
+    like_count
     tags {
+      id
       tag_name
     }
     comments {
+      id
       content
-      like_count
       user {
+        id
         username
       }
-      id
       created_at
       updated_at
+    }
+    user {
+      id
+      username
+      email
+      role {
+        id
+        name
+      }
     }
   }
 }

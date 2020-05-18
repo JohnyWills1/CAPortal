@@ -568,40 +568,6 @@
               }
             }
           },
-          "posts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "string"
-                },
-                "thread": {
-                  "type": "string"
-                },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -636,12 +602,6 @@
               "role": {
                 "type": "string"
               },
-              "threads": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "comments": {
                 "type": "array",
                 "items": {
@@ -653,6 +613,43 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "posts": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "user": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
               }
             }
           }
@@ -663,13 +660,10 @@
           "name": {
             "type": "string"
           },
-          "posts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "user": {
+            "type": "string"
+          },
+          "posts": {
             "type": "string"
           }
         }
