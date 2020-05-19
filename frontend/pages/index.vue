@@ -1,7 +1,9 @@
 <template>
-  <div class="uk-container uk-container-large">
-    <h1 class="uk-heading-large">CAPortal</h1>
-    <Threads :threads="threads"></Threads>
+  <div class="uk-section">
+    <div class="uk-container uk-container-large uk-position-relative">
+      <h1 class="uk-heading-large">CAPortal</h1>
+      <Threads :threads="threads"></Threads>
+    </div>
   </div>
 </template>
 <nuxt/>

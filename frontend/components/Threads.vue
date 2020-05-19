@@ -1,14 +1,27 @@
   <template>
   <div>
-    <div class="uk-text-center uk-grid-match uk-child-width-expand@s" uk-grid>
-      <router-link v-for="thread in threads" :to="{ name: 'thread-id', params: { id: thread.id }}" class="uk-link-reset" :key="thread.id">
-        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-            <img :src="api_url + thread.Image[0].url" :alt="thread.name" height="500" width="500">
-            <h3 class="uk-card-title">{{ thread.name }}</h3>
+
+    <div class="uk-container uk-container-large uk-position-relative">
+      <div class="uk-position-relative uk-margin-medium">
+        <div class="uk-position-top-right uk-margin-small-top">
+          <ul class="uk-iconnav">
+            <li><a href="#" uk-icon-="icon: plus"></a></li>
+            <li><a href="#" uk-icon="icon: file-edit"></a></li>
+          </ul>
         </div>
-      </router-link>
+      </div>
+      <hr class="uk-margin-medium">
+
+      <div class="uk-grid-collapse uk-child-width-1-4@s" uk-grid>
+        <router-link v-for="thread in threads" :to="{ name: 'thread-id', params: { id: thread.id }}" class="uk-link-reset" :key="thread.id">
+          <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" :alt="thread.name" :data-src="api_url + thread.Image[0].url" uk-img>
+            <h1 class="uk-text-center uk-text-emphasis">{{thread.name}}</h1>
+          </div>
+        </router-link>
+      </div>
 
     </div>
+
   </div>
 </template>
 

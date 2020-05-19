@@ -2,6 +2,12 @@
 
 <div>
   <div class="uk-container">
+    <!-- Alert if form is empty -->
+    <div v-if="errors.length" v-for="error in errors" class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>{{ error }}</p>
+    </div>
+
     <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
       <div class="uk-width-1-1@m">
         <div class="uk-margin uk-width-large uk-margin-auto">
@@ -48,6 +54,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      errors: [],
       //Log In
       login: {
         identifier: '',
@@ -58,12 +65,29 @@ export default {
   methods: {
     async loginUser() {
       try {
+
+        //Check form for errors
+        this.checkForm()
+
         let response = await this.$auth.loginWith('local', { data: this.login })
         console.log(response)
         console.log(response.data)
         // this.$router.push("/");
       } catch (err) {
         console.log(err)
+      }
+    },
+    checkForm() {
+      if (this.login.identifier && this.login.password){
+        return true
+      }
+      this.errors = [];
+
+      if (!this.login.identifier) {
+        this.errors.push("E-mail is required.")
+      }
+      if (!this.login.password) {
+        this.errors.push("Password is required.")
       }
     }
   }

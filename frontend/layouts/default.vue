@@ -62,7 +62,29 @@
     </div>
   </div>
 
+  <!-- CAPortal Content inserted here -->
   <nuxt />
+
+  <!-- Footer section -->
+  <div class="uk-section uk-section-muted">
+    <div class="uk-container uk-container-center uk-text-center">
+
+      <nuxt-link to="https://graphql.org/">
+        <img src="http://localhost:1337/uploads/b8bef38fd40142238ac8fcd0b8717e91.svg" width="50" height="50" uk-svg>
+      </nuxt-link>
+      <nuxt-link to="https://nuxtjs.org/">
+        <img src="http://localhost:1337/uploads/6fd2c55afcc348a7a7638201271a8726.svg" width="50" height="50" uk-svg>
+      </nuxt-link>
+      <nuxt-link to="https://strapi.io/">
+        <img src="http://localhost:1337/uploads/cbf142b61beb43b395ee645a12ef73d6.svg" width="50" height="50" uk-svg>
+      </nuxt-link>
+      <nuxt-link to="https://getuikit.com/">
+        <img src="http://localhost:1337/uploads/cdb69092c6b14a7db9d3d63908366d1b.svg" width="50" height="50" uk-svg>
+      </nuxt-link>
+    </div>
+  </div>
+
+
 </div>
 </template>
 

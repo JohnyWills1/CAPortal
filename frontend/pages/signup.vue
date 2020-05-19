@@ -1,6 +1,12 @@
 <template>
-
 <div class="uk-container">
+
+  <!-- Alert if form is empty -->
+  <div v-if="errors.length" v-for="error in errors" class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>{{ error }}</p>
+  </div>
+
   <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
     <div class="uk-width-1-1@m">
       <div class="uk-margin uk-width-large uk-margin-auto">
@@ -51,6 +57,7 @@ export default {
   data() {
     return {
       //Sign Up
+      errors: [],
       email: '',
       username: '',
       password: ''
@@ -58,6 +65,10 @@ export default {
   },
   methods: {
   createUser() {
+
+    //Check the form
+    this.checkForm()
+
     axios
       .post('http://localhost:1337/users', {
         username: this.username,
@@ -66,10 +77,6 @@ export default {
       })
       .then(response => {
         // Handle success.
-        console.log('Well done!');
-        console.log('User profile', response);
-        console.log('User token', response.data);
-
         this.loginUser()
 
         this.$router.push('/')
@@ -91,6 +98,23 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    checkForm() {
+      if (this.email && this.password && this.email){
+        return true
+      }
+      this.errors = [];
+
+      if (!this.email) {
+        this.errors.push("E-mail is required.")
+      }
+      if (!this.password) {
+        this.errors.push("Password is required.")
+      }
+      if (!this.username) {
+        this.errors.push("Password is required.")
+      }
+
     }
   }
 }
