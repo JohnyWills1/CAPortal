@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/18/2020 4:10:26 AM"
+    "x-generation-date": "05/19/2020 5:29:09 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4144,6 +4144,37 @@
           "content": {
             "type": "string"
           },
+          "post": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
           "user": {
             "required": [
               "id",
@@ -4190,42 +4221,14 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
-              }
-            }
-          },
-          "post": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
               }
             }
           }
@@ -4236,10 +4239,10 @@
           "content": {
             "type": "string"
           },
-          "user": {
+          "post": {
             "type": "string"
           },
-          "post": {
+          "user": {
             "type": "string"
           }
         }
@@ -4284,14 +4287,17 @@
                 "content": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 }
               }
             }
+          },
+          "like_count": {
+            "type": "integer"
           },
           "user": {
             "required": [
@@ -4339,6 +4345,9 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
@@ -4346,9 +4355,6 @@
                 }
               }
             }
-          },
-          "like_count": {
-            "type": "integer"
           }
         }
       },
@@ -4369,11 +4375,11 @@
               "type": "string"
             }
           },
-          "user": {
-            "type": "string"
-          },
           "like_count": {
             "type": "integer"
+          },
+          "user": {
+            "type": "string"
           }
         }
       },
@@ -4457,6 +4463,37 @@
               }
             }
           },
+          "posts": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
           "user": {
             "required": [
               "id",
@@ -4503,6 +4540,9 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
@@ -4511,36 +4551,8 @@
               }
             }
           },
-          "posts": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
-              }
-            }
+          "admin_accepted": {
+            "type": "boolean"
           }
         }
       },
@@ -4549,11 +4561,14 @@
           "name": {
             "type": "string"
           },
+          "posts": {
+            "type": "string"
+          },
           "user": {
             "type": "string"
           },
-          "posts": {
-            "type": "string"
+          "admin_accepted": {
+            "type": "boolean"
           }
         }
       },
@@ -4658,6 +4673,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "profilePicture": {
+                  "type": "string"
                 },
                 "threads": {
                   "type": "array",
@@ -4773,10 +4791,10 @@
                 "content": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 }
               }
@@ -4807,12 +4825,58 @@
                     "type": "string"
                   }
                 },
-                "user": {
-                  "type": "string"
-                },
                 "like_count": {
                   "type": "integer"
+                },
+                "user": {
+                  "type": "string"
                 }
+              }
+            }
+          },
+          "profilePicture": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
               }
             }
           },
@@ -4835,11 +4899,14 @@
                     "type": "string"
                   }
                 },
+                "posts": {
+                  "type": "string"
+                },
                 "user": {
                   "type": "string"
                 },
-                "posts": {
-                  "type": "string"
+                "admin_accepted": {
+                  "type": "boolean"
                 }
               }
             }

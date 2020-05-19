@@ -25,10 +25,10 @@
     <div class="uk-navbar-right" v-if="$auth.loggedIn">
       <ul class="uk-navbar-nav">
         <li>
-          <a class="uk-navbar-item">
+          <nuxt-link :to="{ name: 'user-id', params: { id: $auth.user.id }}" class="uk-link-reset" :key="$auth.user.id">
             <span class="uk-padding-small" uk-icon="user"></span>
             {{ $auth.user.username }}
-          </a>
+          </nuxt-link>
         </li>
         <li>
           <a class="uk-navbar-item" @click.prevent="logout()">
@@ -67,20 +67,20 @@
 
   <!-- Footer section -->
   <div class="uk-section uk-section-muted">
+    <p class="uk-text-center">Website built with:</p>
     <div class="uk-container uk-container-center uk-text-center">
-
-      <nuxt-link to="https://graphql.org/">
+      <a href="https://graphql.org/">
         <img src="http://localhost:1337/uploads/b8bef38fd40142238ac8fcd0b8717e91.svg" width="50" height="50" uk-svg>
-      </nuxt-link>
-      <nuxt-link to="https://nuxtjs.org/">
+      </a>
+      <a href="https://nuxtjs.org/">
         <img src="http://localhost:1337/uploads/6fd2c55afcc348a7a7638201271a8726.svg" width="50" height="50" uk-svg>
-      </nuxt-link>
-      <nuxt-link to="https://strapi.io/">
+      </a>
+      <a href="https://strapi.io/">
         <img src="http://localhost:1337/uploads/cbf142b61beb43b395ee645a12ef73d6.svg" width="50" height="50" uk-svg>
-      </nuxt-link>
-      <nuxt-link to="https://getuikit.com/">
+      </a>
+      <a href="https://getuikit.com/">
         <img src="http://localhost:1337/uploads/cdb69092c6b14a7db9d3d63908366d1b.svg" width="50" height="50" uk-svg>
-      </nuxt-link>
+      </a>
     </div>
   </div>
 

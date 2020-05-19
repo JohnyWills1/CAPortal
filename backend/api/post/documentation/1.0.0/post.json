@@ -548,14 +548,17 @@
                 "content": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 }
               }
             }
+          },
+          "like_count": {
+            "type": "integer"
           },
           "user": {
             "required": [
@@ -603,6 +606,9 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
@@ -610,9 +616,6 @@
                 }
               }
             }
-          },
-          "like_count": {
-            "type": "integer"
           }
         }
       },
@@ -633,11 +636,11 @@
               "type": "string"
             }
           },
-          "user": {
-            "type": "string"
-          },
           "like_count": {
             "type": "integer"
+          },
+          "user": {
+            "type": "string"
           }
         }
       }

@@ -615,6 +615,9 @@
                     "type": "string"
                   }
                 },
+                "profilePicture": {
+                  "type": "string"
+                },
                 "threads": {
                   "type": "array",
                   "items": {

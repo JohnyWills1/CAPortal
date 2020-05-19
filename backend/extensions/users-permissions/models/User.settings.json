@@ -64,6 +64,11 @@
       "collection": "post",
       "via": "user"
     },
+    "profilePicture": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
     "threads": {
       "collection": "thread",
       "via": "user"

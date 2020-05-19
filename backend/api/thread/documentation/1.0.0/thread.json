@@ -568,6 +568,37 @@
               }
             }
           },
+          "posts": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
           "user": {
             "required": [
               "id",
@@ -614,6 +645,9 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
@@ -622,36 +656,8 @@
               }
             }
           },
-          "posts": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
-              }
-            }
+          "admin_accepted": {
+            "type": "boolean"
           }
         }
       },
@@ -660,11 +666,14 @@
           "name": {
             "type": "string"
           },
+          "posts": {
+            "type": "string"
+          },
           "user": {
             "type": "string"
           },
-          "posts": {
-            "type": "string"
+          "admin_accepted": {
+            "type": "boolean"
           }
         }
       }

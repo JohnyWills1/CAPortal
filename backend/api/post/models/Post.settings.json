@@ -27,13 +27,13 @@
       "collection": "comments",
       "via": "post"
     },
+    "like_count": {
+      "type": "integer"
+    },
     "user": {
       "model": "user",
       "via": "posts",
       "plugin": "users-permissions"
-    },
-    "like_count": {
-      "type": "integer"
     }
   }
 }

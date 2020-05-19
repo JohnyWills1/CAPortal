@@ -34,5 +34,6 @@ query thread_posts($id: ID!) {
       }
     }
     updated_at
+    admin_accepted
   }
 }

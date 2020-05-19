@@ -519,6 +519,37 @@
           "content": {
             "type": "string"
           },
+          "post": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
+          },
           "user": {
             "required": [
               "id",
@@ -565,42 +596,14 @@
                   "type": "string"
                 }
               },
+              "profilePicture": {
+                "type": "string"
+              },
               "threads": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
-              }
-            }
-          },
-          "post": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "user": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
               }
             }
           }
@@ -611,10 +614,10 @@
           "content": {
             "type": "string"
           },
-          "user": {
+          "post": {
             "type": "string"
           },
-          "post": {
+          "user": {
             "type": "string"
           }
         }
