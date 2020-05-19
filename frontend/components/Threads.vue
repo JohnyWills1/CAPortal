@@ -1,6 +1,13 @@
   <template>
   <div>
 
+    <!-- Admin Dashboard -->
+    <div v-if="$auth.loggedIn">
+      <div v-if="$auth.user.role.name === 'Admin' ">
+        Admin Dashboard.
+      </div>
+    </div>
+
     <div class="uk-container uk-container-large uk-position-relative">
       <div class="uk-position-relative uk-margin-medium">
         <div class="uk-position-top-right uk-margin-bottom">
@@ -77,6 +84,12 @@ export default {
       }
     },
     methods: {
+      createThread(){
+        const bodyFormData = new FormData();
+
+      }
+
+
     }
   }
 </script>
