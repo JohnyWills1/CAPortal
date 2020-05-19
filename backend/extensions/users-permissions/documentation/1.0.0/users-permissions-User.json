@@ -1278,10 +1278,7 @@
                   "type": "string"
                 },
                 "Image": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "type": "string"
                 },
                 "posts": {
                   "type": "string"
