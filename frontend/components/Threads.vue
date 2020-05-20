@@ -12,7 +12,7 @@
       <div class="uk-position-relative uk-margin-medium">
         <div class="uk-position-top-right uk-margin-bottom">
           <ul class="uk-iconnav">
-            <li><a class="uk-button uk-button-secondary uk-link-reset" href="/topicSuggest">Suggest a Topic!</a></li>
+            <li><button class="uk-button uk-button-secondary uk-link-reset" v-on:click="topicSuggest()">Suggest a Topic!</button></li>
           </ul>
         </div>
       </div>
@@ -64,7 +64,9 @@ export default {
       }
     },
     methods: {
-  
+      topicSuggest() {
+        this.$router.push('/topicSuggest')
+      }
     }
   }
 </script>

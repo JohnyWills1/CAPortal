@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="uk-container uk-container-large uk-position-relative">
-      <h1 class="uk-heading-large">Home</h1>
+      <div class="uk-container">
+        <h1 class="uk-heading-large">Home</h1>
+      </div>
       <Threads :threads="threads"></Threads>
     </div>
   </div>

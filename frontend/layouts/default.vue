@@ -54,7 +54,9 @@
           <h2>CA-Portal</h2>
           <ul class="uk-nav uk-nav-primary uk-nav-parent-icon" uk-nav>
             <li v-for="thread in threads">
-              <router-link class="uk-modal-close" :to="{ name: 'thread-id', params: { id: thread.id }}" tag="a">{{ thread.name }}</router-link>
+              <div v-if="thread.admin_accepted">
+                <router-link class="uk-modal-close" :to="{ name: 'thread-id', params: { id: thread.id }}" tag="a">{{ thread.name }}</router-link>
+              </div>
             </li>
           </ul>
         <p class="uk-text-light">Built with Strapi</p>
