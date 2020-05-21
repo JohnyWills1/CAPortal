@@ -1,15 +1,23 @@
 <template>
 <div>
   <div class="uk-section">
-    <div class="uk-container">
+    <div class="uk-container uk-position-relative">
       <h1 class="uk-heading-large">{{thread.name}}</h1>
     </div>
     <div class="uk-container uk-container-small uk-position-relative">
-
       <div v-if="thread.posts && thread.posts.length">
         <div class="uk-position-relative uk-margin-medium">
         </div>
         <hr class="uk-margin-medium">
+        <div class="uk-alert-danger" v-if="this.show_alert" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>Failed to submit Post, either you are not logged in or do not have permissions.</p>
+        </div>
+        <div class="uk-alert-success" v-if="this.show_success" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p>Successfully submitted post in: {{ thread.name }}</p>
+        </div>
+
         <router-link class v-for="post in thread.posts" :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
           <ul class="uk-list uk-list-striped">
             <li v-if="post.title" class="uk-">
@@ -52,21 +60,16 @@
             <h1 class="uk-heading-medium uk-text-center">Create a Post</h1>
             <hr class="uk-margin-medium">
             <div class="uk-margin uk-text-center">
-              <input class="uk-input uk-form-width-large" type="text" placeholder="Post Title">
+              <input class="uk-input uk-form-width-large" type="text" placeholder="Post Title" ref="post_title">
 
               <div class="uk-margin">
-                <textarea class="uk-textarea" rows="5" placeholder="Post Body"></textarea>
-              </div>
-
-              <div class="uk-margin">
-                <input class="uk-input uk-form-width-large" type="text" placeholder="Tags: seperate with commas - food,travel,tech">
+                <textarea class="uk-textarea" rows="5" placeholder="Post Body" ref="post_body"></textarea>
               </div>
 
               <div class="uk-margin uk-text-center">
                 <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Submit</button>
               </div>
             </div>
-
         </fieldset>
       </form>
     </div>
@@ -76,6 +79,7 @@
 
 <script>
 import thread_postsQuery from '~/apollo/queries/thread/thread_posts'
+import axios from 'axios';
 
 var moment = require('moment')
 
@@ -85,8 +89,9 @@ export default {
       thread: {},
       post_title: '',
       post_body: '',
-      post_tags: [],
       moment: moment,
+      show_alert: false,
+      show_success: false,
       api_url: process.env.strapiBaseUri
     }
   },
@@ -104,6 +109,42 @@ export default {
   methods: {
     createPost() {
 
+      //Only using refs to get input data as vue bindings cause the modal to close on keyboard event
+      var post = {
+        title: this.post_title = this.$refs.post_title.value,
+        content: this.post_body = this.$refs.post_body.value,
+        user: this.$auth.user
+      }
+
+      axios
+        .post('http://localhost:1337/posts', {
+          title: this.post_title,
+          content: this.post_body,
+          user: this.$auth.user
+        })
+        .then(response => {
+          // Handle success.
+          console.log('Successfully created Post.');
+          axios
+            .put('http://localhost:1337/threads/' + this.thread.id, {
+              posts: this.thread.posts.concat(response.data)
+            })
+            .then(response => {
+              console.log("Successfully added post to this thread.")
+              this.show_success = true;
+              this.$router.push('/thread/' + this.thread.id)
+            })
+            .catch(error => {
+              console.log('An error occured:', error);
+              this.show_alert = true;
+            });
+          this.show_success = true;
+        })
+        .catch(error => {
+          // Handle error.
+          console.log('An error occurred:', error);
+          this.show_alert = true;
+        });
     }
   }
 }

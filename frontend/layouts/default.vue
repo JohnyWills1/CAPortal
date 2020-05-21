@@ -25,14 +25,25 @@
     <div class="uk-navbar-right" v-if="$auth.loggedIn">
       <ul class="uk-navbar-nav">
         <li>
-          <nuxt-link :to="{ name: 'user-id', params: { id: $auth.user.id }}" class="uk-link-reset" :key="$auth.user.id">
-            <span class="uk-padding-small" uk-icon="user"></span>
+          <!-- Admin Dashboard -->
+          <nuxt-link class="uk-navbar-item" to="/adminDashboard">
+            <div v-if="$auth.loggedIn">
+              <div v-if="$auth.user.role.name === 'Admin' ">
+                <span class="uk-padding-small" uk-icon="bolt"></span>
+                Admin Dashboard
+              </div>
+            </div>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link :to="{ name: 'user-id', params: { id: $auth.user.id }}" class="uk-link-reset uk-navbar-item" :key="$auth.user.id">
+            <span class="uk-padding-small" uk-icon="settings"></span>
             {{ $auth.user.username }}
           </nuxt-link>
         </li>
         <li>
           <a class="uk-navbar-item" @click.prevent="logout()">
-            <span class="uk-padding-small" uk-icon="settings"></span>
+            <span class="uk-padding-small" uk-icon="sign-out"></span>
             Logout
           </a>
         </li>

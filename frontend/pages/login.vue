@@ -7,6 +7,10 @@
       <a class="uk-alert-close" uk-close></a>
       <p>{{ error }}</p>
     </div>
+    <div v-if="show_invalid" class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>{{ invalid_message }}</p>
+    </div>
 
     <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
       <div class="uk-width-1-1@m">
@@ -36,7 +40,6 @@
                   <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Login</button>
                 </div>
                 <div class="uk-text-small uk-text-center">Not registered? <a href="/signup"> Create an account</a></div>
-                <div class="uk-text-small uk-text-center">Forgot Password? <a href="/resetPassword"> Send Reset E-mail</a></div>
               </div>
             </form>
           </div>
@@ -55,6 +58,8 @@ export default {
   data() {
     return {
       errors: [],
+      show_invalid: false,
+      invalid_message: '',
       //Log In
       login: {
         identifier: '',
@@ -70,11 +75,25 @@ export default {
         this.checkForm()
 
         let response = await this.$auth.loginWith('local', { data: this.login })
-        console.log(response)
-        console.log(response.data)
         // this.$router.push("/");
+        axios
+          .post('http://localhost:1337/auth/local', {
+            identifier: this.login.identifier,
+            password: this.login.password,
+          })
+          .then(response => {
+            // Handle success.
+            console.log('Well done!');
+            console.log('User profile', response.data.user);
+            console.log('User token', response.data.jwt);
+          })
+          .catch(error => {
+            // Handle error.
+            console.log('An error occurred:', error);
+          });
       } catch (err) {
-        console.log(err)
+        this.show_invalid = true;
+        this.invalid_message = err.response.data.message[0].messages[0].message;
       }
     },
     checkForm() {
@@ -89,6 +108,7 @@ export default {
       if (!this.login.password) {
         this.errors.push("Password is required.")
       }
+      this.show_invalid = false;
     }
   }
 }

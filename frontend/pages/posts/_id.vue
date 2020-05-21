@@ -46,23 +46,25 @@
         </div>
 
         <!-- Comment section -->
-        <div class="uk-section-muted uk-margin-medium">
-          <div class="uk-container uk-margin-small">
-            <div v-for="comment in post.comments">
-              <br>
-              <header class="uk-comment-header">
-                <ul class="uk-comment-meta uk-subnav">
-                  <li> {{ comment.like_count }} </li>
-                  <li> {{ moment(comment.created_at).format("LLL") }} </li>
-                </ul>
-              </header>
-              <hr class="uk-margin-small">
-              <div class="uk-comment-body uk-padding">{{ comment.content }}</div>
-              <br>
+        <div class="uk-position-relative uk-margin-medium uk-text-left">
+          <div class="uk-section-muted uk-margin-medium">
+            <div class="uk-container uk-margin-small">
+              <div v-for="comment in post.comments">
+                <br>
+                <header class="uk-comment-header">
+                  <ul class="uk-comment-meta uk-subnav">
+                    <li> {{ comment.like_count }} </li>
+                    <li> {{ moment(comment.created_at).format("LLL") }} </li>
+                  </ul>
+                </header>
+                <hr class="uk-margin-small">
+                <div class="uk-comment-body uk-padding">{{ comment.content }}</div>
+                <br>
+              </div>
             </div>
           </div>
         </div>
-
+        
     </div>
   </div>
 </div>
@@ -82,7 +84,8 @@ export default {
       show_alert: false,
       comment_body: '',
       moment: moment,
-      api_url: process.env.strapiBaseUri
+      api_url: process.env.strapiBaseUri,
+
     }
   },
   apollo: {
@@ -98,6 +101,9 @@ export default {
   },
   methods: {
     postComment() {
+      // if (this.comment_body) {
+      //   break;
+      // }
       axios
         .post('http://localhost:1337/comments', {
           content: this.comment_body,
@@ -114,7 +120,6 @@ export default {
           console.log('An error occurred:', error);
           this.show_alert = true;
         });
-
     }
   }
 }

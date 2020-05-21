@@ -1,0 +1,27 @@
+query users {
+  users {
+    id
+    username
+    email
+    confirmed
+    blocked
+    role {
+      id
+      name
+      type
+    }
+    profilePicture {
+      id
+      name
+      url
+    }
+    comments {
+      id
+      content
+      post {
+        id
+        title
+      }
+    }
+  }
+}

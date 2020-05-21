@@ -4,12 +4,17 @@ a {
 
 h1  {
   font-family: Staatliches;
-  font-size: 60px;
+  font-size: 100px;
 }
 
 h2 {
   font-family: Staatliches;
   font-size: 70px;
+}
+
+h3 {
+  font-family: Staatliches;
+  font-size: 60px;
 }
 
 #category {

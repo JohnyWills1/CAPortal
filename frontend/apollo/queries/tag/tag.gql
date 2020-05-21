@@ -1,5 +1,0 @@
-query Tags($id: ID!) {
-  tag(id: $id) {
-    tag_name
-  }
-}

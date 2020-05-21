@@ -26,8 +26,11 @@
     "graphql-tag": "^2.10.3",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.12.2",
+    "tiptap": "^1.27.1",
+    "tiptap-extensions": "^1.29.1",
     "uikit": "^3.3.7",
     "vue-js-modal": "^1.3.33",
+    "vue-quill-editor": "^3.0.6",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

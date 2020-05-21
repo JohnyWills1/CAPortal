@@ -6,6 +6,10 @@
     <a class="uk-alert-close" uk-close></a>
     <p>{{ error }}</p>
   </div>
+  <div v-if="show_invalid" class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>{{ invalid_message }}</p>
+  </div>
 
   <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
     <div class="uk-width-1-1@m">
@@ -58,6 +62,8 @@ export default {
     return {
       //Sign Up
       errors: [],
+      show_invalid: false,
+      invalid_message: '',
       email: '',
       username: '',
       password: ''
@@ -65,12 +71,13 @@ export default {
   },
   methods: {
   createUser() {
+    this.show_invalid = false;
 
     //Check the form
     this.checkForm()
 
     axios
-      .post('http://localhost:1337/users', {
+      .post('http://localhost:1337/auth/local/register', {
         username: this.username,
         email: this.email,
         password: this.password,
@@ -83,7 +90,8 @@ export default {
       })
       .catch(error => {
         // Handle error.
-        console.log('An error occurred:', error);
+        this.show_invalid = true;
+        this.invalid_message = error.response.data.message[0].messages[0].message;
       });
     },
     async loginUser() {
@@ -94,9 +102,9 @@ export default {
               password: this.password
           }
         })
-        console.log(response)
+        //Success
       } catch (err) {
-        console.log(err)
+        //Error
       }
     },
     checkForm() {
@@ -112,7 +120,7 @@ export default {
         this.errors.push("Password is required.")
       }
       if (!this.username) {
-        this.errors.push("Password is required.")
+        this.errors.push("Username is required.")
       }
 
     }

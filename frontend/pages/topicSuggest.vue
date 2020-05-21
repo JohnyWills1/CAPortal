@@ -25,16 +25,13 @@
                 </div>
 
                 <div class="uk-text-center">
-                  <div class="js-upload" uk-form-custom>
-                      <input type="file" name="Image">
-                      <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
-                  </div>
+                  <input type="file" ref="image" accept="image/*">
                 </div>
 
                 <hr class="uk-margin-medium">
 
                 <div class="uk-margin uk-text-center">
-                  <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" @click="createThread()" type="submit">Submit</button>
+                  <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" @click="createThread()" type="submit">Suggest</button>
                 </div>
             </fieldset>
           </form>
@@ -52,45 +49,43 @@ export default {
     return {
       api_url: process.env.strapiBaseUri,
       thread_name: '',
-      success: false
+      success: false,
+      file: {}
     }
   },
   methods: {
-    createThread() {
-      const formElement = document.querySelector('form');
-      const request = new XMLHttpRequest();
-      const formData = new FormData();
-
-      const formElements = formElement.elements;
-
-      const data = {};
-
-      for (let i = 0; i < formElements.length; i++) {
-        const currentElement = formElements[i];
-        if (!['submit', 'file'].includes(currentElement.type)) {
-          data[currentElement.name] = currentElement.value;
-        } else if (currentElement.type === 'file') {
-          if (currentElement.files.length === 1) {
-            const file = currentElement.files[0];
-            formData.append(`files.${currentElement.name}`, file, file.name);
-          } else {
-            for (let i = 0; i < currentElement.files.length; i++) {
-              const file = currentElement.files[i];
-
-              formData.append(`files.${currentElement.name}`, file, file.name);
-            }
-          }
-        }
-      }
-
-      formData.append('data', JSON.stringify(data));
-
-      request.open('POST', `${this.api_url}/threads`);
-
-      request.send(formData);
-    },
     submitted() {
       this.success = true;
+    },
+    createThread() {
+      const formElement = document.querySelector('form');
+      let data = {
+        name: this.thread_name,
+        user: this.$auth.user,
+        admin_accepted: false,
+      }
+
+      axios.post('http://localhost:1337/threads', data)
+          .then(res => {
+              console.log(res);
+              return res.data.id;
+          })
+          .then(refId =>{
+              const data = new FormData();
+              data.append('files', formElement.elements[2].files[0]);
+              data.append('refId', refId);
+              data.append('ref', 'thread');
+              data.append('source', 'file');
+              data.append('field', 'Image');
+              return axios.post('http://localhost:1337/upload', data)
+          })
+          .then(res =>{
+              console.log(res);
+              console.log("You suggest a thread successfully...");
+          })
+          .catch(error =>{
+              console.log(error);
+          })
     }
   }
 }
