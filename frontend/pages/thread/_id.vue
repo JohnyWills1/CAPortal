@@ -33,7 +33,7 @@
               </ul>
             </div>
           </router-link>
-          <div class="uk-float-right" v-if="$auth.user.role.name === ('Moderator')||('Admin') ">
+          <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
             <a @click="deletePost(post.id)"  uk-icon="icon: close" class="uk-padding">Delete Post</a>
           </div>
         </div>
@@ -75,7 +75,7 @@
               </div>
 
               <div class="uk-margin uk-text-center">
-                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Submit</button>
+                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" uk-toggle="target: #post_modal" type="submit">Submit</button>
               </div>
             </div>
         </fieldset>

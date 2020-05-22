@@ -63,7 +63,7 @@
                           <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.user.username }}</a></h4>
                           <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                               <li><a href="#">{{moment(comment.created_at).format("LLL")}}</a></li>
-                              <div class="uk-float-right" v-if="$auth.user.role.name === ('Moderator')||('Admin')">
+                              <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
                                 <a @click="deleteComment(comment.id)"  uk-icon="icon: close">Delete Comment</a>
                               </div>
                           </ul>
