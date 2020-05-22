@@ -2,7 +2,7 @@
   <div>
     <div class="uk-container uk-container-large uk-position-relative">
       <div class="uk-position-relative uk-margin-medium">
-        <div class="uk-position-top-right uk-margin-bottom">
+        <div class="uk-position-top-right uk-margin-bottom" v-if="this.$auth.loggedIn">
           <ul class="uk-iconnav">
             <li><button class="uk-button uk-button-secondary uk-link-reset" v-on:click="topicSuggest()">Suggest a Topic!</button></li>
           </ul>

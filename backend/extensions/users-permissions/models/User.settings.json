@@ -56,10 +56,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "comments": {
-      "collection": "comments",
-      "via": "user"
-    },
     "posts": {
       "collection": "post",
       "via": "user"
@@ -71,6 +67,10 @@
     },
     "threads": {
       "collection": "thread",
+      "via": "user"
+    },
+    "comments": {
+      "collection": "comments",
       "via": "user"
     }
   }

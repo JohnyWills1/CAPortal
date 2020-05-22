@@ -50,8 +50,7 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
-    'nuxt-fontawesome'
+    '@nuxtjs/auth'
   ],
 
   axios: {

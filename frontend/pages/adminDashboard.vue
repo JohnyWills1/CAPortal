@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-section">
+  <div class="uk-section" v-if="$auth.user.role.name === 'Admin' ">
     <div class="uk-container uk-container-small uk-position-relative uk-text-center">
 
       <h1 class="uk-heading-large uk-text-center">Admin Dashboard</h1>
@@ -9,7 +9,7 @@
       <p>Block users, promote users to moderators or delete threads:</p>
       <hr class="uk-margin-small">
       <!-- User table here -->
-      <table class="uk-table uk-table-divider">
+      <table class="uk-table uk-table-striped">
           <thead>
               <tr>
                   <th>Username</th>
@@ -34,7 +34,7 @@
       </table>
       <hr class="uk-margin-medium">
 
-      <h2 class="uk-heading-large uk-text-center">Threads</h2>
+      <h2 class="uk-heading-large uk-text-center">Pending Threads</h2>
       <table class="uk-table uk-table-divider">
           <thead>
               <tr>
@@ -51,6 +51,27 @@
                 <td>
                   <button class="uk-button-primary" @click="accept(thread.id)">Accept</button>
                   <button class="uk-button-primary" @click="reject(thread.id)">Reject</button>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+      <hr class="uk-margin-medium">
+
+      <h2 class="uk-heading-large uk-text-center">Current Threads</h2>
+      <table class="uk-table uk-table-divider">
+          <thead>
+              <tr>
+                  <th>Thread Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody class="uk-text-left">
+              <tr v-for="thread in threads" v-if="thread.admin_accepted">
+                <td>{{ thread.name }}</td>
+                <td>{{ thread.admin_accepted }}</td>
+                <td>
+                  <button class="uk-button-primary" @click="deleteT(thread.id)">Delete</button>
                 </td>
             </tr>
           </tbody>
@@ -85,12 +106,12 @@ export default {
   },
   methods: {
     ban(id) {
-      console.log(id)
       axios
         .put('http://localhost:1337/users/' + id, {
           blocked: true
         })
         .then(response => {
+          this.$router.push("/adminDashboard")
           console.log(response)
         })
         .catch(error => {
@@ -101,9 +122,15 @@ export default {
     promote(id) {
       axios
         .put('http://localhost:1337/users/' + id, {
-          role: {id:6,name:"Moderator",type:"moderator",__typename:"UsersPermissionsRole"}
+          role: {
+            id:6,
+            name:"Moderator",
+            type:"moderator",
+            __typename:"UsersPermissionsRole"
+          }
         })
         .then(response => {
+          this.$router.push("/adminDashboard")
           console.log(response)
         })
         .catch(error => {
@@ -111,28 +138,40 @@ export default {
           console.log('An error occurred:', error);
         });
     },
-    accept (id) {
+    accept(id) {
       axios
         .put('http://localhost:1337/threads/' + id, {
           admin_accepted: true
         })
         .then(response => {
           console.log(response)
+          this.$router.push("/adminDashboard")
         })
         .catch(error => {
           // Handle error.
           console.log('An error occurred:', error);
         });
     },
-    reject (id) {
+    reject(id) {
       axios
         .delete('http://localhost:1337/threads/' + id)
         .then(response => {
           console.log(response)
+          this.$router.push("/adminDashboard")
         })
         .catch(error => {
           // Handle error.
           console.log('An error occurred:', error);
+        });
+    },
+    deleteT(id) {
+      axios
+        .delete('http://localhost:1337/threads/' + id)
+        .then(response => {
+          console.log('Thread Deleted.');
+        })
+        .catch(error => {
+          console.log('An error has occurred:', error);
         });
     }
   }

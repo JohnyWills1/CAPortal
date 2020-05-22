@@ -31,8 +31,10 @@
                 <hr class="uk-margin-medium">
 
                 <div class="uk-margin uk-text-center">
-                  <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" @click="createThread()" type="submit">Suggest</button>
+                  <button class="uk-button uk-button-primary uk-button-large" @click="createThread()" type="submit">Suggest</button>
+                  <button class="uk-button uk-button-primary uk-button-large" @click="returnHome()" type="submit">Return Home</button>
                 </div>
+
             </fieldset>
           </form>
         </div>
@@ -86,6 +88,9 @@ export default {
           .catch(error =>{
               console.log(error);
           })
+    },
+    returnHome() {
+      this.$router.push("/");
     }
   }
 }

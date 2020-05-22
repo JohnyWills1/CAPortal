@@ -1162,28 +1162,6 @@
               }
             }
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "post": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "posts": {
             "type": "array",
             "items": {
@@ -1203,17 +1181,17 @@
                 "tags": {
                   "type": "string"
                 },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "like_count": {
                   "type": "integer"
                 },
                 "user": {
                   "type": "string"
+                },
+                "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -1291,6 +1269,28 @@
                 }
               }
             }
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "post": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1329,12 +1329,6 @@
           "role": {
             "type": "string"
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "posts": {
             "type": "array",
             "items": {
@@ -1342,6 +1336,12 @@
             }
           },
           "threads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "comments": {
             "type": "array",
             "items": {
               "type": "string"

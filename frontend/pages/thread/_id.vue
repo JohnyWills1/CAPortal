@@ -18,18 +18,26 @@
           <p>Successfully submitted post in: {{ thread.name }}</p>
         </div>
 
-        <router-link class v-for="post in thread.posts" :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
-          <ul class="uk-list uk-list-striped">
-            <li v-if="post.title" class="uk-">
-              {{ post.title }}
-              <div class="uk-text-right">
-                <span class="uk-padding-small" uk-icon="user"></span>{{ post.user.username }}
-                <span class="uk-padding-small" uk-icon="commenting"></span>{{ post.comments.length }}
-                <span class="uk-padding-small" uk-icon="heart"></span>{{ post.like_count }}
-              </div>
-            </li>
-          </ul>
-        </router-link>
+        <div class="uk-padding" v-for="post in thread.posts">
+          <router-link :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
+            <div class="uk-container uk-padding-xsmall">
+              <ul class="uk-list uk-list-striped">
+                <li v-if="post.title" class="uk-">
+                  {{ post.title }}
+                  <div class="uk-text-right">
+                    <span class="uk-padding-small" uk-icon="user"></span>{{ post.user.username }}
+                    <span class="uk-padding-small" uk-icon="commenting"></span>{{ post.comments.length }}
+                    <span class="uk-padding-small" uk-icon="heart"></span>{{ post.like_count }}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </router-link>
+          <div class="uk-float-right" v-if="$auth.user.role.name === ('Moderator')||('Admin') ">
+            <a @click="deletePost(post.id)"  uk-icon="icon: close" class="uk-padding">Delete Post</a>
+          </div>
+        </div>
+
       </div>
 
       <div class="uk-section" v-else>
@@ -39,7 +47,7 @@
         </div>
       </div>
 
-      <div class="uk-position-top-right uk-margin-bottom">
+      <div class="uk-position-top-right uk-margin-bottom" v-if="this.$auth.loggedIn">
         <ul class="uk-iconnav">
           <li><button class="uk-button uk-button-secondary" uk-toggle="target: #post_modal" type="button">Create a Post!</button></li>
         </ul>
@@ -144,6 +152,16 @@ export default {
           // Handle error.
           console.log('An error occurred:', error);
           this.show_alert = true;
+        });
+    },
+    deletePost(id) {
+      axios
+        .delete('http://localhost:1337/posts/' + id)
+        .then(response => {
+          console.log('Post Deleted.');
+        })
+        .catch(error => {
+          console.log('An error has occurred:', error);
         });
     }
   }

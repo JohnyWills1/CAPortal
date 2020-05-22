@@ -582,17 +582,17 @@
               "tags": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "like_count": {
                 "type": "integer"
               },
               "user": {
                 "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -630,12 +630,6 @@
               "role": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "posts": {
                 "type": "array",
                 "items": {
@@ -646,6 +640,12 @@
                 "type": "string"
               },
               "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments": {
                 "type": "array",
                 "items": {
                   "type": "string"

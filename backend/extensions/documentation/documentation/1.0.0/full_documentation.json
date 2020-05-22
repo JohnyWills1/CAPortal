@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/21/2020 4:23:00 AM"
+    "x-generation-date": "05/21/2020 4:57:59 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4161,17 +4161,17 @@
               "tags": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "like_count": {
                 "type": "integer"
               },
               "user": {
                 "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -4209,12 +4209,6 @@
               "role": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "posts": {
                 "type": "array",
                 "items": {
@@ -4225,6 +4219,12 @@
                 "type": "string"
               },
               "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -4274,28 +4274,6 @@
               }
             }
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "post": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "like_count": {
             "type": "integer"
           },
@@ -4333,12 +4311,6 @@
               "role": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "posts": {
                 "type": "array",
                 "items": {
@@ -4351,6 +4323,34 @@
               "threads": {
                 "type": "array",
                 "items": {
+                  "type": "string"
+                }
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "post": {
+                  "type": "string"
+                },
+                "user": {
                   "type": "string"
                 }
               }
@@ -4369,17 +4369,17 @@
           "tags": {
             "type": "string"
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "like_count": {
             "type": "integer"
           },
           "user": {
             "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -4477,17 +4477,17 @@
               "tags": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "like_count": {
                 "type": "integer"
               },
               "user": {
                 "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -4525,12 +4525,6 @@
               "role": {
                 "type": "string"
               },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "posts": {
                 "type": "array",
                 "items": {
@@ -4541,6 +4535,12 @@
                 "type": "string"
               },
               "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -4659,12 +4659,6 @@
                 "role": {
                   "type": "string"
                 },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "posts": {
                   "type": "array",
                   "items": {
@@ -4675,6 +4669,12 @@
                   "type": "string"
                 },
                 "threads": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "comments": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -4775,28 +4775,6 @@
               }
             }
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "string"
-                },
-                "post": {
-                  "type": "string"
-                },
-                "user": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "posts": {
             "type": "array",
             "items": {
@@ -4816,17 +4794,17 @@
                 "tags": {
                   "type": "string"
                 },
-                "comments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "like_count": {
                   "type": "integer"
                 },
                 "user": {
                   "type": "string"
+                },
+                "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -4904,6 +4882,28 @@
                 }
               }
             }
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "post": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -4942,12 +4942,6 @@
           "role": {
             "type": "string"
           },
-          "comments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "posts": {
             "type": "array",
             "items": {
@@ -4955,6 +4949,12 @@
             }
           },
           "threads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "comments": {
             "type": "array",
             "items": {
               "type": "string"

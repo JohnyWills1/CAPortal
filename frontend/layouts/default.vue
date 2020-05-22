@@ -70,7 +70,6 @@
               </div>
             </li>
           </ul>
-        <p class="uk-text-light">Built with Strapi</p>
       </div>
     </div>
   </div>
