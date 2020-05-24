@@ -18,9 +18,9 @@
           <p>Successfully submitted post in: {{ thread.name }}</p>
         </div>
 
-        <div class="uk-padding" v-for="post in thread.posts">
+        <div v-for="post in thread.posts">
           <router-link :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
-            <div class="uk-container uk-padding-xsmall">
+            <div class="uk-container uk-padding-xsmall" v-if="post.user">
               <ul class="uk-list uk-list-striped">
                 <li v-if="post.title" class="uk-">
                   {{ post.title }}
@@ -30,11 +30,16 @@
                     <span class="uk-padding-small" uk-icon="heart"></span>{{ post.like_count }}
                   </div>
                 </li>
+                <div v-if="post.tags" v-for="tag in post.tags">
+                  <span class="uk-label uk-label-warning" >{{ tag.tag_name }}</span>
+                </div>
               </ul>
             </div>
           </router-link>
-          <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
-            <a @click="deletePost(post.id)"  uk-icon="icon: close" class="uk-padding">Delete Post</a>
+          <div v-if="$auth.user">
+            <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
+              <a @click="deletePost(post.id)"  uk-icon="icon: close" class="uk-padding">Delete Post</a>
+            </div>
           </div>
         </div>
 
@@ -71,7 +76,9 @@
               <input class="uk-input uk-form-width-large" type="text" placeholder="Post Title" ref="post_title">
 
               <div class="uk-margin">
-                <textarea class="uk-textarea" rows="5" placeholder="Post Body" ref="post_body"></textarea>
+                <client-only>
+                  <vue-simplemde v-model="post_body" ref="markdownEditor" />
+                </client-only>
               </div>
 
               <div class="uk-margin uk-text-center">
@@ -120,7 +127,7 @@ export default {
       //Only using refs to get input data as vue bindings cause the modal to close on keyboard event
       var post = {
         title: this.post_title = this.$refs.post_title.value,
-        content: this.post_body = this.$refs.post_body.value,
+        content: this.post_body,
         user: this.$auth.user
       }
 

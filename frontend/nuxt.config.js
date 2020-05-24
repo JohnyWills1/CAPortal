@@ -29,13 +29,15 @@ export default {
   css: [
     'uikit/dist/css/uikit.min.css',
     'uikit/dist/css/uikit.css',
-    '@assets/css/main.css'
+    '@assets/css/main.css',
+    'simplemde/dist/simplemde.min.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/uikit', ssr: false }
+    { src: '~/plugins/uikit', ssr: false },
+    { src: '~plugins/nuxt-simplemde-plugin.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -35,7 +35,7 @@
         </div>
 
         <div v-if="this.show_comment_box" class="uk-container uk-position-relative">
-          <div class="uk-position-relative uk-margin-medium uk-text-center">
+          <div class="uk-position-relative uk-margin-medium">
             <form>
               <div v-if="this.show_alert" class="uk-alert-danger" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
@@ -43,7 +43,9 @@
               </div>
               <fieldset class="uk-fieldset">
                 <div class="uk-margin">
-                  <textarea class="uk-textarea" rows="5" placeholder="Comment Body" v-model="comment_body"></textarea>
+                  <client-only>
+                    <vue-simplemde v-model="comment_body" ref="markdownEditor" />
+                  </client-only>
                 </div>
                 <div class="uk-margin" v-if="this.$auth.loggedIn">
                   <button class="uk-button uk-button-secondary" @click="postComment()" type="submit">Post Comment</button>
@@ -71,7 +73,7 @@
                       </div>
                   </header>
                   <div class="uk-comment-body">
-                      <p>{{ comment.content }}</p>
+                      <p v-html="$md.render(comment.content)"></p>
                   </div>
                   <br>
               </article>
