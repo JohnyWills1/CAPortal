@@ -1313,7 +1313,7 @@
           },
           "password": {
             "type": "string",
-            "minLength": 6
+            "minLength": 4
           },
           "resetPasswordToken": {
             "type": "string"
