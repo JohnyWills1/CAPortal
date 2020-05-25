@@ -22,7 +22,7 @@
           <router-link :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
             <div class="uk-container uk-padding-small" v-if="post.user">
               <ul class="uk-list uk-list-striped">
-                <li v-if="post.title" class="uk-">
+                <li v-if="post.title">
                   {{ post.title }}
                   <div class="uk-text-right">
                     <span class="uk-padding-small" uk-icon="user"></span>{{ post.user.username }}
