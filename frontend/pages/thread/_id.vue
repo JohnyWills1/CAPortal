@@ -18,7 +18,7 @@
           <p>Successfully submitted post in: {{ thread.name }}</p>
         </div>
 
-        <div v-for="post in thread.posts">
+        <div v-for="post in orderedPosts">
           <router-link :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
             <div class="uk-container uk-padding-small" v-if="post.user">
               <ul class="uk-list uk-list-striped">
@@ -186,6 +186,10 @@ export default {
   computed: {
     simpleStringArray() {
       return this.post_tags.map(tag => tag.text)
+    },
+    orderedPosts() {
+      var _ = require('lodash');
+      return _.orderBy(this.thread.posts, ['like_count'], ['desc'])
     }
   }
 }

@@ -38,7 +38,8 @@ export default {
   plugins: [
     { src: '~/plugins/uikit', ssr: false },
     { src: '~plugins/nuxt-simplemde-plugin.js', mode: 'client' },
-    { src: '~/plugins/vue-tags-input', ssr: false }
+    { src: '~/plugins/vue-tags-input', ssr: false },
+    { src: '~/plugins/vue-lodash.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

@@ -12,8 +12,8 @@
       <hr class="uk-margin-medium">
 
       <div class="uk-padding">
-        <div class="uk-grid-collapse uk-child-width-1-4@s" uk-grid>
-          <nuxt-link v-for="thread in threads"  :to="{ name: 'thread-id', params: { id: thread.id }}" class="uk-link-reset" :key="thread.id">
+        <div class="uk-grid-collapse uk-child-width-1-5@s" uk-grid>
+          <nuxt-link v-for="thread in orderedThreads"  :to="{ name: 'thread-id', params: { id: thread.id }}" class="uk-link-reset" :key="thread.id">
             <div v-if="thread.Image">
               <div v-if="thread.admin_accepted" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" :alt="thread.name" :data-src="api_url + thread.Image.url" uk-img>
                 <h3 class="uk-text-center uk-text-emphasis">{{thread.name}}</h3>
@@ -46,6 +46,12 @@ export default {
     methods: {
       topicSuggest() {
         this.$router.push('/topicSuggest')
+      }
+    },
+    computed: {
+      orderedThreads() {
+        var _ = require('lodash');
+        return _.orderBy(this.threads, ['posts'], ['desc'])
       }
     }
   }
