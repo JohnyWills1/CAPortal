@@ -4,11 +4,8 @@ query post($id: ID!) {
     title
     content
     created_at
+    tags
     like_count
-    tags {
-      id
-      tag_name
-    }
     comments {
       id
       content

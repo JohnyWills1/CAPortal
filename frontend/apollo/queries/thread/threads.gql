@@ -1,4 +1,3 @@
-# Write your query or mutation here
 query threads {
   threads {
     id
@@ -17,14 +16,17 @@ query threads {
     }
     created_at
     posts {
+      id
       title
       content
-      user {
+      tags
+      like_count
+      created_at
+    	user {
         username
         email
         id
       }
-      like_count
       comments {
         content
         user {
@@ -32,8 +34,6 @@ query threads {
           email
           id
         }
-        id
-        created_at
         updated_at
       }
     }

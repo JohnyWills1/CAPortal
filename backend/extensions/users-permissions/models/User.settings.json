@@ -56,10 +56,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "posts": {
-      "collection": "post",
-      "via": "user"
-    },
     "profilePicture": {
       "model": "file",
       "via": "related",
@@ -71,6 +67,10 @@
     },
     "comments": {
       "collection": "comments",
+      "via": "user"
+    },
+    "posts": {
+      "collection": "post",
       "via": "user"
     }
   }

@@ -22,9 +22,6 @@
       "via": "related",
       "plugin": "upload"
     },
-    "posts": {
-      "collection": "post"
-    },
     "user": {
       "model": "user",
       "via": "threads",
@@ -32,6 +29,9 @@
     },
     "admin_accepted": {
       "type": "boolean"
+    },
+    "posts": {
+      "collection": "post"
     }
   }
 }

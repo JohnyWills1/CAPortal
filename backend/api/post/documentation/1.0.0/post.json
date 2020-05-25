@@ -522,19 +522,6 @@
           "content": {
             "type": "string"
           },
-          "tags": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "tag_name": {
-                "type": "string"
-              }
-            }
-          },
           "like_count": {
             "type": "integer"
           },
@@ -572,12 +559,6 @@
               "role": {
                 "type": "string"
               },
-              "posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "profilePicture": {
                 "type": "string"
               },
@@ -588,6 +569,12 @@
                 }
               },
               "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "posts": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -608,14 +595,17 @@
                 "content": {
                   "type": "string"
                 },
-                "post": {
+                "user": {
                   "type": "string"
                 },
-                "user": {
+                "post": {
                   "type": "string"
                 }
               }
             }
+          },
+          "tags": {
+            "type": "object"
           }
         }
       },
@@ -625,9 +615,6 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
-          },
-          "tags": {
             "type": "string"
           },
           "like_count": {
@@ -641,6 +628,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "tags": {
+            "type": "object"
           }
         }
       }

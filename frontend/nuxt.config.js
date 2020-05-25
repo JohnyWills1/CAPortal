@@ -37,7 +37,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/uikit', ssr: false },
-    { src: '~plugins/nuxt-simplemde-plugin.js', mode: 'client' }
+    { src: '~plugins/nuxt-simplemde-plugin.js', mode: 'client' },
+    { src: '~/plugins/vue-tags-input', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -93,6 +94,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    vendor: ['@johmun/vue-tags-input'],
     extend (config, ctx) {
     }
   }

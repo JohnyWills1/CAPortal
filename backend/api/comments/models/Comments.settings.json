@@ -17,14 +17,14 @@
     "content": {
       "type": "text"
     },
-    "post": {
-      "model": "post",
-      "via": "comments"
-    },
     "user": {
       "model": "user",
       "via": "comments",
       "plugin": "users-permissions"
+    },
+    "post": {
+      "model": "post",
+      "via": "comments"
     }
   }
 }

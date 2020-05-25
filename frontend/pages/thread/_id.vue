@@ -20,7 +20,7 @@
 
         <div v-for="post in thread.posts">
           <router-link :to="{ name: 'posts-id', params: { id: post.id }}" :key="post.id">
-            <div class="uk-container uk-padding-xsmall" v-if="post.user">
+            <div class="uk-container uk-padding-small" v-if="post.user">
               <ul class="uk-list uk-list-striped">
                 <li v-if="post.title" class="uk-">
                   {{ post.title }}
@@ -30,14 +30,14 @@
                     <span class="uk-padding-small" uk-icon="heart"></span>{{ post.like_count }}
                   </div>
                 </li>
-                <div v-if="post.tags" v-for="tag in post.tags">
-                  <span class="uk-label uk-label-warning" >{{ tag.tag_name }}</span>
+                <div v-if="post.tags">
+                  <span class="uk-label uk-label-warning uk-margin-right" v-for="tag in post.tags">{{ tag }}</span>
                 </div>
               </ul>
             </div>
           </router-link>
           <div v-if="$auth.user">
-            <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
+            <div v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
               <a @click="deletePost(post.id)"  uk-icon="icon: close" class="uk-padding">Delete Post</a>
             </div>
           </div>
@@ -72,13 +72,24 @@
 
             <h1 class="uk-heading-medium uk-text-center">Create a Post</h1>
             <hr class="uk-margin-medium">
-            <div class="uk-margin uk-text-center">
+            <div class="uk-margin">
               <input class="uk-input uk-form-width-large" type="text" placeholder="Post Title" ref="post_title">
 
               <div class="uk-margin">
                 <client-only>
                   <vue-simplemde v-model="post_body" ref="markdownEditor" />
                 </client-only>
+              </div>
+
+              <div class="uk-margin-right uk-grid-small uk-child-width-auto uk-grid">
+                  <no-ssr>
+                    <vue-tags-input
+                      class=""
+                      v-model="post_tag"
+                      :tags="post_tags"
+                      @tags-changed="newTags => post_tags = newTags"
+                    />
+                  </no-ssr>
               </div>
 
               <div class="uk-margin uk-text-center">
@@ -102,8 +113,11 @@ export default {
   data() {
     return {
       thread: {},
+      tags: {},
       post_title: '',
       post_body: '',
+      post_tag: '',
+      post_tags: [],
       moment: moment,
       show_alert: false,
       show_success: false,
@@ -123,19 +137,16 @@ export default {
   },
   methods: {
     createPost() {
-
       //Only using refs to get input data as vue bindings cause the modal to close on keyboard event
-      var post = {
-        title: this.post_title = this.$refs.post_title.value,
-        content: this.post_body,
-        user: this.$auth.user
-      }
+      this.post_title = this.$refs.post_title.value
 
       axios
         .post('http://localhost:1337/posts', {
           title: this.post_title,
           content: this.post_body,
-          user: this.$auth.user
+          user: this.$auth.user,
+          tags: this.simpleStringArray,
+          like_count: 1
         })
         .then(response => {
           // Handle success.
@@ -170,6 +181,11 @@ export default {
         .catch(error => {
           console.log('An error has occurred:', error);
         });
+    }
+  },
+  computed: {
+    simpleStringArray() {
+      return this.post_tags.map(tag => tag.text)
     }
   }
 }

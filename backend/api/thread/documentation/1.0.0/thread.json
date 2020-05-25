@@ -565,37 +565,6 @@
               }
             }
           },
-          "posts": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
-              },
-              "user": {
-                "type": "string"
-              },
-              "comments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -630,12 +599,6 @@
               "role": {
                 "type": "string"
               },
-              "posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
               "profilePicture": {
                 "type": "string"
               },
@@ -650,11 +613,48 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "posts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           },
           "admin_accepted": {
             "type": "boolean"
+          },
+          "posts": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tags": {
+                "type": "object"
+              }
+            }
           }
         }
       },
@@ -663,14 +663,14 @@
           "name": {
             "type": "string"
           },
-          "posts": {
-            "type": "string"
-          },
           "user": {
             "type": "string"
           },
           "admin_accepted": {
             "type": "boolean"
+          },
+          "posts": {
+            "type": "string"
           }
         }
       }

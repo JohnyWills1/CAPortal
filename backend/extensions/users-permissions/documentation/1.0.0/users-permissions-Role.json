@@ -603,12 +603,6 @@
                 "role": {
                   "type": "string"
                 },
-                "posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "profilePicture": {
                   "type": "string"
                 },
@@ -619,6 +613,12 @@
                   }
                 },
                 "comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "posts": {
                   "type": "array",
                   "items": {
                     "type": "string"

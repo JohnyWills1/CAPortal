@@ -1,13 +1,14 @@
 <template>
   <div class="uk-section">
     <div class="uk-container uk-container-small uk-position-relative">
-      <div class="uk-position-relative uk-margin-medium uk-text-center">
+      <div class="uk-position-relative uk-margin-medium">
 
         <!-- Post section -->
         <article class="uk-article">
-
-          <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{post.title}}</a></h1>
-          <p class="uk-article-meta" v-if="post.user">Written by {{ post.user.username }} on {{ moment(post.created_at).format("LL") }}.</p>
+          <div class="uk-text-center">
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="">{{post.title}}</a></h1>
+            <p class="uk-article-meta" v-if="post.user">Written by {{ post.user.username }} on {{ moment(post.created_at).format("LL") }}.</p>
+          </div>
           <hr class="uk-margin-medium">
           <div class="uk-alert-success" v-if="this.show_success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
@@ -15,7 +16,10 @@
           </div>
           <p class="uk-article-meta uk-text-center" v-if="post.like_count">Likes: {{ post.like_count }} <a @click="likePost()"  uk-icon="icon: heart; ratio: 2" class="uk-padding"></a></p>
           <p class="uk-article-meta uk-text-center" v-else>Likes: 0 <span uk-icon="icon: heart" class="uk-padding-small uk-padding-remove-left"></span></p>
-          <p v-if="post.content" id="editor" v-html="$md.render(post.content)"></p>
+
+          <div class="uk-text-left">
+            <p v-if="post.content" id="editor" v-html="$md.render(post.content)"></p>
+          </div>
 
           <div class="uk-grid-small uk-child-width-auto" uk-grid>
             <div>

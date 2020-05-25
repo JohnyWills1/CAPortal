@@ -20,9 +20,6 @@
     "content": {
       "type": "richtext"
     },
-    "tags": {
-      "collection": "tag"
-    },
     "like_count": {
       "type": "integer"
     },
@@ -34,6 +31,9 @@
     "comments": {
       "collection": "comments",
       "via": "post"
+    },
+    "tags": {
+      "type": "json"
     }
   }
 }

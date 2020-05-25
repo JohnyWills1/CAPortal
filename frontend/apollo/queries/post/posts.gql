@@ -3,12 +3,9 @@ query posts {
     id
     title
     content
+    tags
     like_count
     created_at
-    tags {
-      id
-      tag_name
-    }
     comments {
       id
       content

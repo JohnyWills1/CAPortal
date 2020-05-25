@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@johmun/vue-tags-input": "^2.1.0",
     "@nuxtjs/apollo": "^4.0.0-rc17",
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.9.5",
