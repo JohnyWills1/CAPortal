@@ -66,11 +66,13 @@
               <article class="uk-comment">
                   <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                       <div class="uk-width-expand">
-                          <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">{{ comment.user.username }}</a></h4>
+                          <h4 class="uk-comment-title uk-margin-remove">{{ comment.user.username }}</h4>
                           <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                              <li><a href="#">{{moment(comment.created_at).format("LLL")}}</a></li>
-                              <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
-                                <a @click="deleteComment(comment.id)"  uk-icon="icon: close">Delete Comment</a>
+                              <li>{{moment(comment.created_at).format("LLL")}}</li>
+                              <div v-if="$auth.loggedIn">
+                                <div class="uk-float-right" v-if="$auth.user.role.name === 'Moderator' || $auth.user.role.name === 'Admin'">
+                                  <a @click="deleteComment(comment.id)"  uk-icon="icon: close">Delete Comment</a>
+                                </div>
                               </div>
                           </ul>
                           <hr class="uk-margin-small">
