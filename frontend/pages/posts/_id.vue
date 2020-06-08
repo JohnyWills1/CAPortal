@@ -14,7 +14,7 @@
             <a class="uk-alert-close" uk-close></a>
             <p>Liked Post!</p>
           </div>
-          <p class="uk-article-meta uk-text-center" v-if="post.like_count">Likes: {{ post.like_count }} <a @click="likePost()"  uk-icon="icon: heart; ratio: 2" class="uk-padding"></a></p>
+          <p class="uk-article-meta uk-text-center" v-if="post.like_count">Likes: {{ post.like_count }} <a v-if="$auth.loggedIn" @click="likePost()"  uk-icon="icon: heart; ratio: 2" class="uk-padding"></a></p>
           <p class="uk-article-meta uk-text-center" v-else>Likes: 0 <span uk-icon="icon: heart" class="uk-padding-small uk-padding-remove-left"></span></p>
 
           <div class="uk-text-left">
@@ -23,7 +23,7 @@
 
           <div class="uk-grid-small uk-child-width-auto" uk-grid>
             <div>
-              <a class="uk-button uk-button-text" href="#" v-if="post.comments"> {{ post.comments.length }} Comments</a>
+              <a class="uk-button uk-button-text" href="" v-if="post.comments"> {{ post.comments.length }} Comments</a>
             </div>
           </div>
 
