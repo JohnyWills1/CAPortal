@@ -958,6 +958,13 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.9.tgz#d3af6d4e50f337327de90447fe35fa1e117a2fbe"
   integrity sha512-h/emhmZz+DfB2zOGLWawNwXq82UYhn9waTfUjLLmeaIqtnIyNt6kYlpQT/vzJjLZRDRvY2IEJAh1di5qKpKVpA==
 
+"@johmun/vue-tags-input@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@johmun/vue-tags-input/-/vue-tags-input-2.1.0.tgz#d265c00ecea092ecfcea21945f31c22a619e4862"
+  integrity sha512-Fdwfss/TqCqMJbGAkmlzKbcG/ia1MstYjhqPBj+zG7h/166tIcE1TIftUxhT9LZ+RWjRSG0EFA1UyaHQSr3k3Q==
+  dependencies:
+    vue "^2.6.10"
+
 "@nuxt/babel-preset-app@2.12.2":
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/@nuxt/babel-preset-app/-/babel-preset-app-2.12.2.tgz#0e87c4f4f578868e74f6fa9e2a38cace5c77dac8"
@@ -2793,9 +2800,9 @@ bluebird@^3.1.1, bluebird@^3.5.5:
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.8"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
-  integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
+  version "4.11.9"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
+  integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
 
 body-parser@1.19.0, body-parser@^1.18.3, body-parser@^1.19.0:
   version "1.19.0"
@@ -3427,6 +3434,18 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+
+codemirror-spell-checker@*:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/codemirror-spell-checker/-/codemirror-spell-checker-1.1.2.tgz#1c660f9089483ccb5113b9ba9ca19c3f4993371e"
+  integrity sha1-HGYPkIlIPMtRE7m6nKGcP0mTNx4=
+  dependencies:
+    typo-js "*"
+
+codemirror@*:
+  version "5.56.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.56.0.tgz#675640fcc780105cd22d3faa738b5d7ea6426f61"
+  integrity sha512-MfKVmYgifXjQpLSgpETuih7A7WTTIsxvKfSLGseTY5+qt0E1UD1wblZGM6WLenORo8sgmf+3X+WTe2WF7mufyw==
 
 collection-visit@^1.0.0:
   version "1.0.0"
@@ -4323,9 +4342,9 @@ elegant-spinner@^1.0.1:
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
 elliptic@^6.0.0:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.2.tgz#05c5678d7173c049d8ca433552224a495d0e3762"
-  integrity sha512-f4x70okzZbIQl/NSRLkI/+tteV/9WqL98zx+SQ69KbXxmVrmjwsNUPn/gYJJ0sHvEak24cZgHIPegRePAtA/xw==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
+  integrity sha512-IMqzv5wNQf+E6aHeIqATs0tOLeOTwj1QKbRcS3jBbYkl5oLAserA8yJTT7/VyHUYG91PRmPyeQDObKLPpeS4dw==
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -6601,6 +6620,11 @@ markdown-it@^8.3.1:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
+
+marked@*:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-1.1.1.tgz#e5d61b69842210d5df57b05856e0c91572703e6a"
+  integrity sha512-mJzT8D2yPxoPh7h0UXkB+dBj4FykPJ2OIfxAWeIHrvoHDkFxukV/29QxoFQoPM6RLEwhIFdJpmKBlqVM3s2ZIw==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -9281,6 +9305,15 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+simplemde@*:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/simplemde/-/simplemde-1.11.2.tgz#a23a35d978d2c40ef07dec008c92f070d8e080e3"
+  integrity sha1-ojo12XjSxA7wfewAjJLwcNjggOM=
+  dependencies:
+    codemirror "*"
+    codemirror-spell-checker "*"
+    marked "*"
+
 slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
@@ -10153,6 +10186,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typo-js@*:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/typo-js/-/typo-js-1.1.0.tgz#a5a9f592bcb453666bf70c9694da58705d025ed8"
+  integrity sha512-W3kLbx+ML9PBl5Bzso/lTvVxk4BCveSNAtQeht59FEtxCdGThmn6wSHA4Xq3eQYAK24NHdisMM4JmsK0GFy/pg==
+
 ua-parser-js@^0.7.21:
   version "0.7.21"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
@@ -10570,6 +10608,11 @@ vue-loader@^15.9.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-lodash@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/vue-lodash/-/vue-lodash-2.1.2.tgz#1ec2b1471ee289518e8d285250a25516adee6c51"
+  integrity sha512-6QsNC7/XjrK4xKxFhh6Ppvcrfm0uAeR/lFsySsMgfEFUWkvRztcAIS3MsqAI4bBnAaLo9ou+8tUfJ8d+yrljQg==
+
 vue-meta@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-meta/-/vue-meta-2.3.3.tgz#2a097f62817204b0da78be4d62aee0cb566eaee0"
@@ -10609,6 +10652,14 @@ vue-server-renderer@^2.6.11:
     serialize-javascript "^2.1.2"
     source-map "0.5.6"
 
+vue-simplemde@^1.0.6:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vue-simplemde/-/vue-simplemde-1.1.2.tgz#8324b3fceb8a40e5df58d1207367269535978499"
+  integrity sha512-PuiReBtdMUzBnmkcoybMEHgTQ2DxRqWTSJR+UItMVH3WUDjlCKTgENuq6krE//UU7C62lWrUOOfOmD5xIK4TSA==
+  dependencies:
+    marked "*"
+    simplemde "*"
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
@@ -10630,7 +10681,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.11:
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
